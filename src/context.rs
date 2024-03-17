@@ -21,7 +21,7 @@ pub enum Context {
 impl WidgetRef for &Context {
     delegate! {
         to match self {
-        Context::Main(inner) => inner
+            Context::Main(inner) => inner
         } {
             fn render_ref(&self, area: Rect, buf: &mut Buffer);
         }
