@@ -6,7 +6,9 @@ edition = "2021"
 [dependencies]
 anyhow = { version = "1.0.81", features = ["backtrace"] }
 crossterm = "0.27.0"
+delegate = "0.12.0"
 enum_dispatch = "0.3.12"
 hecs = "0.10.4"
-ratatui = "0.26.1"
+hecs-hierarchy = "0.12.0"
+ratatui = { version = "0.26.1", features = ["unstable-widget-ref"] }
 rayon = "1.9.0"
