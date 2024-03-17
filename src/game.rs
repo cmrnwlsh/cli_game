@@ -19,8 +19,6 @@ impl Game {
     }
 
     pub fn update(&mut self, key: KeyEvent) -> Result<()> {
-        Ok(match key {
-            _ => self.context[0].update(&mut self.world)?,
-        })
+        self.context[0].update(&mut self.world, key)
     }
 }

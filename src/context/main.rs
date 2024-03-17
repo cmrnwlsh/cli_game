@@ -1,7 +1,13 @@
 use anyhow::Result;
+use crossterm::event::KeyEvent;
 use delegate::delegate;
 use hecs::World;
-use ratatui::{buffer::Buffer, layout::Rect, widgets::WidgetRef};
+use ratatui::{
+    buffer::Buffer,
+    layout::Rect,
+    text::Line,
+    widgets::{Widget, WidgetRef},
+};
 
 use super::Behavior;
 
@@ -14,7 +20,7 @@ impl Behavior for Main {
         to match self {
             Main::Entry(e) => e
         } {
-            fn update(&mut self, world: &mut World) -> Result<()>;
+            fn update(&mut self, world: &mut World, key: KeyEvent) -> Result<()>;
         }
     }
 }
@@ -31,8 +37,10 @@ impl WidgetRef for Main {
 
 pub struct Entry();
 impl Entry {
-    fn update(&mut self, world: &mut World) -> Result<()> {
+    fn update(&mut self, world: &mut World, key: KeyEvent) -> Result<()> {
         Ok(())
     }
-    fn render_ref(&self, area: Rect, buf: &mut Buffer) {}
+    fn render_ref(&self, area: Rect, buf: &mut Buffer) {
+        Line::raw("hello world").render(area, buf);
+    }
 }
